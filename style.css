@@ -11,6 +11,9 @@ td,table,tr {
     text-align: center;
     vertical-align: center;
 }
+.num {
+    width:20px;
+}
 .field {
     width: 46px;
     height: 46px;
