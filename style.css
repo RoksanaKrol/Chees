@@ -1,0 +1,26 @@
+#board {
+    width: 450px;
+    height: 450px;
+    background-color: #676850;
+    margin: auto;
+    color:#221;
+}
+td,table,tr {
+    border: 2.3px solid #474830;
+    border-collapse: collapse;
+    text-align: center;
+    vertical-align: center;
+}
+.field {
+    width: 46px;
+    height: 46px;
+    border-radius: 3px;
+}
+.black {
+    background-color:#323232;
+    color:#887;
+}
+.white {
+    background-color:#DDA; 
+    color:#443;
+}
