@@ -30,6 +30,7 @@ td,table,tr {
     width: 46px;
     height: 46px;
     border-radius: 3px;
+    padding: 3px;
 }
 .black {
     background-color:#323232;
@@ -38,6 +39,49 @@ td,table,tr {
 .white {
     background-color:#DDA; 
     color:#443;
+}
+
+/* FIGURES */
+.F {
+    width:40px;
+    height:40px;
+    border-radius:20px;
+}
+.Kw {
+    content:url(img/kingW.png);
+}
+.Kb {
+    content:url(img/kingB.png);
+}
+.Qw {
+    content:url(img/queenW.png);
+}
+.Qw {
+    content:url(img/queenB.png);
+}
+.Bw {
+    content:url(img/bishopW.png);
+}
+.Bb {
+    content:url(img/bishopB.png);
+}
+.Nw {
+    content:url(img/knightW.png);
+}
+.Nb {
+    content:url(img/knightB.png);
+}
+.Rw {
+    content:url(img/rookW.png);
+}
+.Rb {
+    content:url(img/rookB.png);
+}
+.Pw {
+    content:url(img/pawnW.png);
+}
+.Pb {
+    content:url(img/pawnB.png);
 }
 
 /* CONSOL */

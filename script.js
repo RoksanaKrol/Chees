@@ -1,6 +1,37 @@
+var a = " abcdefgh";
+var f = [
+    ["P","a2","w"],
+    ["P","b2","w"],
+    ["P","c2","w"],
+    ["P","d2","w"],
+    ["P","e2","w"],
+    ["P","f2","w"],
+    ["P","g2","w"],
+    ["P","h2","w"],
+    ["R","a1","w"],
+    ["R","h1","w"],
+    
+    ["P","a7","b"],
+    ["P","b7","b"],
+    ["P","c7","b"],
+    ["P","d7","b"],
+    ["P","e7","b"],
+    ["P","f7","b"],
+    ["P","g7","b"],
+    ["P","h7","b"],
+    ["R","a8","b"],
+    ["R","h8","b"],
+];
+
+function setFigures() {
+    for (var i=0; i<20; i++) {
+        document.getElementById(f[i][1]).innerHTML="<div id='"+f[i][0]+" "+f[i][1]+"' class='F "+f[i][0]+f[i][2]+"'></div>";
+    }
+}
+
+
 function createBoard() {
     var board = "";
-    var a = " ABCDEFGH";
     
     board +="<table>";
         for(i=0; i<9; i++) {
@@ -26,7 +57,7 @@ function createBoard() {
                         board +="white";
                     }
                 }    
-                board +="'>"+a[j]+i+"</div></td>";
+                board +="'>"/*+a[j]+i*/+"</div></td>";
             }
         }
       board +="</tr>";
@@ -34,6 +65,9 @@ function createBoard() {
         for(i=0; i<9; i++) {
         board+="<td>"+a[i]+"</td>";
     }
+    
     board +="</table>";
     document.getElementById("board").innerHTML = board;
+    
+    setFigures();
 }
