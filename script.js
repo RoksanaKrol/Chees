@@ -1,3 +1,5 @@
+var acFig = 0;
+
 var a = " abcdefgh";
 var f = [
     ["P","a2","w"],
@@ -12,6 +14,9 @@ var f = [
     ["R","a1","w"],
     ["R","h1","w"],
     
+    ["B","c1","w"],
+    ["B","f1","w"],
+    
     ["P","a7","b"],
     ["P","b7","b"],
     ["P","c7","b"],
@@ -23,11 +28,41 @@ var f = [
     
     ["R","a8","b"],
     ["R","h8","b"],
+    
+    ["B","c8","b"],
+    ["B","f8","b"],
 ];
 
+var figures = document.getElementsByClassName("F");
+
+document.getElementsByClassName("F").addEventListener("click", getId);
+    
+    
+function getId(id) {
+    acFig = id;
+  //  document.getElementById("notation").innerHTML = acFig;
+}
+
+function moveF() {
+
+}
+
+function ifB(fi,num) {
+    if (fi[2]=="b") {
+        num = -num;
+    }
+    return num;
+}
+
+function pawn(fi,position) {
+    if(!f.includes(position)) {
+        
+    }
+}
+
 function setFigures() {
-    for (var i=0; i<20; i++) {
-        document.getElementById(f[i][1]).innerHTML="<div id='"+f[i][0]+" "+f[i][1]+"' class='F "+f[i][0]+f[i][2]+"'></div>";
+    for (var i=0; f.length; i++) {
+        document.getElementById(f[i][1]).innerHTML="<div onclick='getId(this.id)' id='"+f[i][0]+" "+f[i][1]+"' class='F "+f[i][0]+f[i][2]+"'></div>";
     }
 }
 
@@ -70,6 +105,5 @@ function createBoard() {
     
     board +="</table>";
     document.getElementById("board").innerHTML = board;
-    
     setFigures();
 }
