@@ -1,4 +1,4 @@
-var acFig = 0;
+var aF = 0;
 
 var a = " abcdefgh";
 var f = [
@@ -10,6 +10,7 @@ var f = [
     ["P","f2","w"],
     ["P","g2","w"],
     ["P","h2","w"],
+    ["P","h3","w"],
     
     ["R","a1","w"],
     ["R","h1","w"],
@@ -32,37 +33,41 @@ var f = [
     ["B","c8","b"],
     ["B","f8","b"],
 ];
-
-var figures = document.getElementsByClassName("F");
-
-document.getElementsByClassName("F").addEventListener("click", getId);
-    
-    
-function getId(id) {
-    acFig = id;
-  //  document.getElementById("notation").innerHTML = acFig;
+ 
+function getIdF(id) {
+    aF = id;
+    document.getElementById("notation").innerHTML = aF;
+    switch (id[0]) {
+            case "P": pawn(); break;
+    }
 }
-
-function moveF() {
-
-}
-
-function ifB(fi,num) {
-    if (fi[2]=="b") {
+function ifB(num) {
+    if (aF[2]=="b") {
         num = -num;
     }
     return num;
 }
+function isInArrayF(position) {
+    let isInArray = false;
+    for(var i=0; i<f.length; i++) {
+        if(f[i][1]==position) {
+            isInArray = true;
+            document.getElementById("notation").innerHTML += f[i][1];
+       }
+    }
+    return isInArray;
+}
 
-function pawn(fi,position) {
-    if(!f.includes(position)) {
-        
+function pawn() {
+    let x = +parseInt(aF[2])+1;
+    if(isInArrayF(aF[1]+x)) {
+        document.getElementById("notation").innerHTML +=" tak "+aF[1]+x;
     }
 }
 
 function setFigures() {
-    for (var i=0; f.length; i++) {
-        document.getElementById(f[i][1]).innerHTML="<div onclick='getId(this.id)' id='"+f[i][0]+" "+f[i][1]+"' class='F "+f[i][0]+f[i][2]+"'></div>";
+    for (var i=0; i<f.length; i++) {
+        document.getElementById(f[i][1]).innerHTML="<div onclick='getIdF(this.id)' id='"+f[i][0]+""+f[i][1]+"' class='F "+f[i][0]+f[i][2]+"'></div>";
     }
 }
 
