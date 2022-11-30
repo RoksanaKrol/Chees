@@ -32,10 +32,10 @@ td,table,tr {
     border-radius: 3px;
     padding: 3px;
 }
-.field:hover {
+/*.field:hover {
     border: 2px solid #666;
     padding: 1px;
-}
+}*/
 .black {
     background-color:#323232;
     color:#887;
@@ -90,7 +90,11 @@ td,table,tr {
 
 /* COLOR BORDERS */
 .green {
-    border: 2px solid #AFA;
+    border: 3px dashed #171;
+    padding: 1px; 
+}
+.green:hover {
+    border: 3px dashed #6A6;
     padding: 1px; 
 }
 

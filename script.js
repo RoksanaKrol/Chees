@@ -26,6 +26,7 @@ var f = [
     ["P","f7","b"],
     ["P","g7","b"],
     ["P","h7","b"],
+    ["P","g6","b"],
     
     ["R","a8","b"],
     ["R","h8","b"],
@@ -34,15 +35,26 @@ var f = [
     ["B","f8","b"],
 ];
  
-function getIdF(id) {
-    aF = id;
-    document.getElementById("notation").innerHTML = aF;
-    switch (id[0]) {
-            case "P": pawn(); break;
+function unSelect() {
+    for (var i=0; i<8; i++) {
+        for(var j=0; j<8; j++) {
+            document.getElementById(a[j]+i).classList.remove("green");
+        }
     }
 }
+function selectF(id) {
+    if (id!=aF) {
+        unSelect();
+        aF=id;
+        document.getElementById("notation").innerHTML = aF;
+        switch (id[0]) {
+                case "P": pawn(); break;
+        }
+    } 
+}
+
 function ifB(num) {
-    if (aF[2]=="b") {
+    if (aF[3]=="b") {
         num = -num;
     }
     return num;
@@ -52,22 +64,21 @@ function isInArrayF(position) {
     for(var i=0; i<f.length; i++) {
         if(f[i][1]==position) {
             isInArray = true;
-            document.getElementById("notation").innerHTML += f[i][1];
        }
     }
     return isInArray;
 }
 
 function pawn() {
-    let x = +parseInt(aF[2])+1;
-    if(isInArrayF(aF[1]+x)) {
-        document.getElementById("notation").innerHTML +=" tak "+aF[1]+x;
+    let x = +parseInt(aF[2])+ifB(1);
+    if(!isInArrayF(aF[1]+x)) {
+        document.getElementById(aF[1]+x).classList.add("green");
     }
 }
 
 function setFigures() {
     for (var i=0; i<f.length; i++) {
-        document.getElementById(f[i][1]).innerHTML="<div onclick='getIdF(this.id)' id='"+f[i][0]+""+f[i][1]+"' class='F "+f[i][0]+f[i][2]+"'></div>";
+        document.getElementById(f[i][1]).innerHTML="<div onclick='selectF(this.id)' id='"+f[i][0]+""+f[i][1]+f[i][2]+"' class='F "+f[i][0]+f[i][2]+"'></div>";
     }
 }
 
