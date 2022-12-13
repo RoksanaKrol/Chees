@@ -42,9 +42,10 @@ function unSelect() {
         }
     }
 }
+// select figure
 function selectF(id) {
     if (id!=aF) {
-        unSelect();
+       // unSelect();
         aF=id;
         document.getElementById("notation").innerHTML = aF;
         switch (id[0]) {
@@ -53,17 +54,20 @@ function selectF(id) {
     } 
 }
 
+// if the figure is black revert direction
 function ifB(num) {
     if (aF[3]=="b") {
         num = -num;
     }
     return num;
 }
+// if the position taken
 function isInArrayF(position) {
     let isInArray = false;
     for(var i=0; i<f.length; i++) {
         if(f[i][1]==position) {
             isInArray = true;
+            document.getElementById("notation").innerHTML += f[i][1];
        }
     }
     return isInArray;
@@ -73,6 +77,7 @@ function pawn() {
     let x = +parseInt(aF[2])+ifB(1);
     if(!isInArrayF(aF[1]+x)) {
         document.getElementById(aF[1]+x).classList.add("green");
+        document.getElementById("notation").innerHTML +=" tak "+aF[1]+x;
     }
 }
 
