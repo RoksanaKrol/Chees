@@ -46,7 +46,7 @@ function unSelectFields() {
 // select figure
 function selectF(id) {
     if (id!=aF) {
-       unSelectFields();
+        unSelectFields();
         aF=id;
         document.getElementById("notation").innerHTML = aF;// for tests only
         switch (id[0]) {
