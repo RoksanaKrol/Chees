@@ -90,11 +90,11 @@ td,table,tr {
 
 /* COLOR BORDERS */
 .green {
-    border: 3px dashed #171;
+    border: 3px dashed #171A;
     padding: 1px; 
 }
 .green:hover {
-    border: 3px dashed #6A6;
+    border: 3px dashed #6A6A;
     padding: 1px; 
 }
 

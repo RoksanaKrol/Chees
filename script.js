@@ -35,6 +35,23 @@ var f = [
     ["B","f8","b"],
 ];
 
+function setFigure(figure,position) {
+    
+}
+
+// when field is pressed moveing active figure
+function move(position) {
+    if (document.getElementById(position).classList.contains("green")) {
+        for(var i=0; i<f.length; i++) {
+            if(f[i][1]==aF[1]+aF[2]) {
+                setFigure(f[i][1],position);
+                f[i][1] = position;
+            }
+        } 
+    }
+     
+}
+
 // unselecting fields possible for a figure to move onto
 function unSelectFields() {
     for (var i=1; i<9; i++) {
@@ -45,14 +62,16 @@ function unSelectFields() {
 }
 // select figure
 function selectF(id) {
+    unSelectFields();
     if (id!=aF) {
-        unSelectFields();
         aF=id;
         document.getElementById("notation").innerHTML = aF;// for tests only
         switch (id[0]) {
                 case "P": pawn(); break;
         }
-    } 
+    } else {
+        aF=0;
+    }
 }
 
 // if the figure is black revert direction
@@ -102,7 +121,7 @@ function createBoard() {
             if (j==0 || j==9) {
                 board+="<td class='num'>"+i+"</td>";
             } else {
-                board +="<td><div id='"+a[j]+i+"'class='field ";
+                board +="<td><div onclick='move(this.id)' id='"+a[j]+i+"'class='field ";
                 if (i%2==0) {
                     if (j%2==0) {
                         board +="white";
