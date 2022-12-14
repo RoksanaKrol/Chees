@@ -1,4 +1,5 @@
 var aF = 0;
+var note = 0;
 
 var a = " abcdefgh";
 var f = [
@@ -10,7 +11,7 @@ var f = [
     ["P","f2","w"],
     ["P","g2","w"],
     ["P","h2","w"],
-    ["P","h3","w"],
+    ["P","h3","b"],
     
     ["R","a1","w"],
     ["R","h1","w"],
@@ -26,7 +27,7 @@ var f = [
     ["P","f7","b"],
     ["P","g7","b"],
     ["P","h7","b"],
-    ["P","g6","b"],
+    ["P","g6","w"],
     
     ["R","a8","b"],
     ["R","h8","b"],
@@ -35,7 +36,7 @@ var f = [
     ["B","f8","b"],
 ];
 
-// when field is pressed moveing active figure
+// when a field is pressed moveing active figure to the field
 function move(position) {
     if (document.getElementById(position).classList.contains("green")) {
         for(var i=0; i<f.length; i++) {
@@ -45,11 +46,14 @@ function move(position) {
                 document.getElementById(position).innerHTML = "<div onclick='selectF(this.id)' id='"+f[i][0]+""+f[i][1]+f[i][2]+"' class='F "+f[i][0]+f[i][2]+"'></div>";
             }
         } 
-    }
-     
+        node+=0.5;
+      //  if(note%2==0) {
+            document.getElementById("nt1").innerHTML += " 2";
+     //   }
+    } 
 }
 
-// unselecting fields possible for a figure to move onto
+// unselecting fields avaliable for a figure to move onto
 function unSelectFields() {
     for (var i=1; i<9; i++) {
         for(var j=1; j<9; j++) {
@@ -62,7 +66,7 @@ function selectF(id) {
     unSelectFields();
     if (id!=aF) {
         aF=id;
-        document.getElementById("notation").innerHTML = aF;// for tests only
+      //  document.getElementById("notation").innerHTML = aF;// for tests only
         switch (id[0]) {
                 case "P": pawn(); break;
         }
@@ -71,20 +75,20 @@ function selectF(id) {
     }
 }
 
-// if the figure is black revert direction
+// if the figure is black revert it's direction
 function ifB(num) {
     if (aF[3]=="b") {
         num = -num;
     }
     return num;
 }
-// if the position taken
+// if the position is taken
 function isInArrayF(position) {
     let isInArray = false;
     for(var i=0; i<f.length; i++) {
         if(f[i][1]==position) {
             isInArray = true;
-            document.getElementById("notation").innerHTML += f[i][1];// for tests only
+          //  document.getElementById("notation").innerHTML += f[i][1];// for tests only
        }
     }
     return isInArray;
@@ -94,7 +98,7 @@ function pawn() {
     let x = +parseInt(aF[2])+ifB(1);
     if(!isInArrayF(aF[1]+x)) {
         document.getElementById(aF[1]+x).classList.add("green");
-        document.getElementById("notation").innerHTML +=" tak "+aF[1]+x;// for tests only
+      //  document.getElementById("notation").innerHTML +=" tak "+aF[1]+x;// for tests only
     }
 }
 
