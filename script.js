@@ -1,5 +1,5 @@
 var aF = 0;
-var note = 0;
+var note = 0.5;
 
 var a = " abcdefgh";
 var f = [
@@ -36,7 +36,7 @@ var f = [
     ["B","f8","b"],
 ];
 
-// when a field is pressed moveing active figure to the field
+// when a field is pressed moveing active figure to the field and notating it
 function move(position) {
     if (document.getElementById(position).classList.contains("green")) {
         for(var i=0; i<f.length; i++) {
@@ -46,10 +46,19 @@ function move(position) {
                 document.getElementById(position).innerHTML = "<div onclick='selectF(this.id)' id='"+f[i][0]+""+f[i][1]+f[i][2]+"' class='F "+f[i][0]+f[i][2]+"'></div>";
             }
         } 
-        node+=0.5;
-      //  if(note%2==0) {
-            document.getElementById("nt1").innerHTML += " 2";
-     //   }
+        note += 0.5;
+        let tm;
+        if (aF[0]=="P") {
+            tm = aF[1]+aF[2];
+        } else {
+            tm = aF[0]+aF[1]+aF[2];
+        }
+        if(note%1==0) {
+            document.getElementById("note").innerHTML += note+"<br>";
+            document.getElementById("nt1").innerHTML += tm+"<br>";
+       } else {
+           document.getElementById("nt2").innerHTML += tm+"<br>";
+       }
     } 
 }
 
