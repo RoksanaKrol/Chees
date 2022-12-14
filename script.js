@@ -35,17 +35,14 @@ var f = [
     ["B","f8","b"],
 ];
 
-function setFigure(figure,position) {
-    
-}
-
 // when field is pressed moveing active figure
 function move(position) {
     if (document.getElementById(position).classList.contains("green")) {
         for(var i=0; i<f.length; i++) {
             if(f[i][1]==aF[1]+aF[2]) {
-                setFigure(f[i][1],position);
+                document.getElementById(f[i][1]).innerHTML = "";
                 f[i][1] = position;
+                document.getElementById(position).innerHTML = "<div onclick='selectF(this.id)' id='"+f[i][0]+""+f[i][1]+f[i][2]+"' class='F "+f[i][0]+f[i][2]+"'></div>";
             }
         } 
     }
