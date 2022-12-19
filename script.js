@@ -39,6 +39,11 @@ var f = [
 // when a field is pressed moveing active figure to the field and notating it
 function move(position) {
     if (document.getElementById(position).classList.contains("green")) {
+        for (var i=0; i<f.length; i++) {
+            if (isInArrayF(position)) {
+                f[i][1] = 00;
+            }
+        }
         for(var i=0; i<f.length; i++) {
             if(f[i][1]==aF[1]+aF[2]) {
                 document.getElementById(f[i][1]).innerHTML = "";
@@ -73,13 +78,15 @@ function unSelectFields() {
 // select figure
 function selectF(id) {
     unSelectFields();
-    if (id!=aF) {
+    if (document.getElementById(id[1]+id[2]).classList.contains("green")) {
+       aF=0;
+    } else if (id!=aF) {
         aF=id;
       //  document.getElementById("notation").innerHTML = aF;// for tests only
         switch (id[0]) {
                 case "P": pawn(); break;
         }
-    } else {
+    } else if (id=aF){
         aF=0;
     }
 }
@@ -104,10 +111,15 @@ function isInArrayF(position) {
 }
 
 function pawn() {
-    let x = +parseInt(aF[2])+ifB(1);
+    let x = parseInt(aF[2])+ifB(1);
+    let right = a[parseInt(a.indexOf(aF[1]))+ifB(1)];
     if(!isInArrayF(aF[1]+x)) {
         document.getElementById(aF[1]+x).classList.add("green");
       //  document.getElementById("notation").innerHTML +=" tak "+aF[1]+x;// for tests only
+    }
+    if (isInArrayF(right+x)) {
+          document.getElementById("notation").innerHTML +=right;// for tests only
+        document.getElementById(right+x).classList.add("green");
     }
 }
 
