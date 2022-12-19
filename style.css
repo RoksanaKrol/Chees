@@ -8,6 +8,7 @@ header {
     color:#888;
     margin: 20px 0 20px 0;
     user-select: none; 
+    text-shadow: 1.5px 1px #888, -1px -1.5px #444;
 }
 
 /* BOARD */
@@ -118,14 +119,19 @@ td,table,tr {
     height: 250px;
     overflow-y:scroll;
 }
+h6 {
+    font-size: 15px;
+    color: #AA6;
+    text-shadow: 1px 1px #EEB, -1px -1px #886;
+}
 
 #note {
     float:left;
-    width:20px;
+    width:40px;
 }
 .nota {
     background-color: #DDA;
-    width:100px;
+    width:90px;
     min-height:350px;
     float:left;
     border-left: 2px solid #BB8;
