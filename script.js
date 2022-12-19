@@ -118,7 +118,7 @@ function pawn() {
       //  document.getElementById("notation").innerHTML +=" tak "+aF[1]+x;// for tests only
     }
     if (isInArrayF(right+x)) {
-          document.getElementById("notation").innerHTML +=right;// for tests only
+         // document.getElementById("notation").innerHTML +=right;// for tests only
         document.getElementById(right+x).classList.add("green");
     }
 }
