@@ -78,15 +78,15 @@ function unSelectFields() {
 // select figure
 function selectF(id) {
     unSelectFields();
-    if (document.getElementById(id[1]+id[2]).classList.contains("green")) {
+    if (document.getElementById(id.id[1]+id.id[2]).classList.contains("green")) {
        aF=0;
-    } else if (id!=aF) {
-        aF=id;
-      //  document.getElementById("notation").innerHTML = aF;// for tests only
-        switch (id[0]) {
+    } else if (id.id!=aF) {
+        aF=id.id;
+        document.getElementById("notation").innerHTML = aF;// for tests only
+        switch (id.id[0]) {
                 case "P": pawn(); break;
         }
-    } else if (id=aF){
+    } else if (id.id=aF){
         aF=0;
     }
 }
@@ -125,7 +125,7 @@ function pawn() {
 
 function setFigures() {
     for (var i=0; i<f.length; i++) {
-        document.getElementById(f[i][1]).innerHTML="<div onclick='selectF(this.id)' id='"+f[i][0]+""+f[i][1]+f[i][2]+"' class='F "+f[i][0]+f[i][2]+"'></div>";
+        document.getElementById(f[i][1]).innerHTML="<div onclick='selectF(this)' id='"+f[i][0]+""+f[i][1]+f[i][2]+"' class='F "+f[i][0]+f[i][2]+"'></div>";
     }
 }
 
